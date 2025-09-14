@@ -9,7 +9,11 @@ RUN apk upgrade
 RUN apk add --no-cache \
   bash curl xz tar 
 
-RUN curl --create-dirs --output /images/4.jpg https://www.gstatic.com/webp/gallery/4.jpg
+# image from Digital Photography Review Galleries
+# https://www.dpreview.com/sample-galleries
+RUN curl --create-dirs /images https://s3.amazonaws.com/files.prod.dpreview.com/sample_galleries/8491664854/3827339379.jpg
+RUN curl --create-dirs /images https://s3.amazonaws.com/files.prod.dpreview.com/sample_galleries/8491664854/8742462568.jpg
+RUN curl --create-dirs /images https://s3.amazonaws.com/files.prod.dpreview.com/sample_galleries/8491664854/8925362357.jpg
 
 ENV XZ_OPT=-e9
 COPY images images
