@@ -17,7 +17,7 @@ jobs:
     - name: Build the Docker image
       run: docker build --tag builder .
 
-    - name: build static program with alpine linux docker 
+    - name: execute image processing program with alpine linux docker 
       run: |
         docker run --cidfile=builder.cid builder true
         docker cp "$(cat builder.cid):work/artifact/." .
