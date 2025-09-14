@@ -11,9 +11,9 @@ RUN apk add --no-cache \
 
 # image from Digital Photography Review Galleries
 # https://www.dpreview.com/sample-galleries
-RUN curl --create-dirs /images https://s3.amazonaws.com/files.prod.dpreview.com/sample_galleries/8491664854/3827339379.jpg
-RUN curl --create-dirs /images https://s3.amazonaws.com/files.prod.dpreview.com/sample_galleries/8491664854/8742462568.jpg
-RUN curl --create-dirs /images https://s3.amazonaws.com/files.prod.dpreview.com/sample_galleries/8491664854/8925362357.jpg
+RUN curl --create-dirs --output /images/3827339379.jpg https://s3.amazonaws.com/files.prod.dpreview.com/sample_galleries/8491664854/3827339379.jpg
+RUN curl --create-dirs --output /images/8742462568.jpg https://s3.amazonaws.com/files.prod.dpreview.com/sample_galleries/8491664854/8742462568.jpg
+RUN curl --create-dirs --output /images/8925362357.jpg https://s3.amazonaws.com/files.prod.dpreview.com/sample_galleries/8491664854/8925362357.jpg
 
 ENV XZ_OPT=-e9
 COPY images images
