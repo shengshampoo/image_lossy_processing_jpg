@@ -9,6 +9,8 @@ RUN apk upgrade
 RUN apk add --no-cache \
   bash curl xz tar 
 
+RUN curl --create-dirs --output /images/4.jpg https://www.gstatic.com/webp/gallery/4.jpg
+
 ENV XZ_OPT=-e9
 COPY images images
 COPY rust-parallel /usr/local/bin/rust-parallel
