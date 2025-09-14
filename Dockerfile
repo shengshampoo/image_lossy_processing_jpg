@@ -18,4 +18,5 @@ COPY cjpeg /usr/local/bin/cjpeg
 COPY guetzli /usr/local/bin/guetzli
 COPY image_lossy_processing_jpg.sh image_lossy_processing_jpg.sh
 RUN chmod +x ./image_lossy_processing_jpg.sh
+RUN chmod +x /usr/local/bin/*
 RUN bash ./image_lossy_processing_jpg.sh
