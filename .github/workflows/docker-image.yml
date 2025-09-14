@@ -22,7 +22,7 @@ jobs:
         docker run --cidfile=builder.cid builder true
         docker cp "$(cat builder.cid):work/artifact/." .
 
-    - name: Upload static program
+    - name: Upload processing jpg image packages
       uses: actions/upload-artifact@v4
       with:
         name: image_jpg
