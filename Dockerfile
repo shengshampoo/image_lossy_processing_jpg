@@ -11,16 +11,11 @@ RUN apk add --no-cache \
 
 # image from Digital Photography Review Galleries
 # https://www.dpreview.com/sample-galleries
-RUN curl --create-dirs --output /images/3827339379.jpg https://s3.amazonaws.com/files.prod.dpreview.com/sample_galleries/8491664854/3827339379.jpg
-RUN curl --create-dirs --output /images/8742462568.jpg https://s3.amazonaws.com/files.prod.dpreview.com/sample_galleries/8491664854/8742462568.jpg
-RUN curl --create-dirs --output /images/8925362357.jpg https://s3.amazonaws.com/files.prod.dpreview.com/sample_galleries/8491664854/8925362357.jpg
+RUN curl --create-dirs --output /images/3827339379.jpg https://s3.amazonaws.com/files.prod.dpreview.com/sample_galleries/8491664854/3827339379.jpg && \
+    curl --create-dirs --output /images/8742462568.jpg https://s3.amazonaws.com/files.prod.dpreview.com/sample_galleries/8491664854/8742462568.jpg && \
+    curl --create-dirs --output /images/8925362357.jpg https://s3.amazonaws.com/files.prod.dpreview.com/sample_galleries/8491664854/8925362357.jpg
 
 ENV XZ_OPT=-e9
 COPY images images
-COPY rust-parallel /usr/local/bin/rust-parallel
-COPY cjpeg /usr/local/bin/cjpeg
-COPY guetzli /usr/local/bin/guetzli
-COPY image_lossy_processing_jpg.sh image_lossy_processing_jpg.sh
-RUN chmod +x ./image_lossy_processing_jpg.sh
-RUN chmod +x /usr/local/bin/*
-RUN bash ./image_lossy_processing_jpg.sh
+COPY rust-parallel cjpeg guetzli image_lossy_processing_jpg.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/* && bash /usr/local/bin/image_lossy_processing_jpg.sh
