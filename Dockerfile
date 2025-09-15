@@ -17,5 +17,5 @@ RUN curl --create-dirs --output /images/3827339379.jpg https://s3.amazonaws.com/
 
 ENV XZ_OPT=-e9
 COPY images images
-COPY avifenc cjpeg gm guetzli image_lossy_processing_jpg.sh rust-parallel /usr/local/bin/
+COPY avifenc cjpeg cjxl gm guetzli image_lossy_processing_jpg.sh rust-parallel /usr/local/bin/
 RUN chmod +x /usr/local/bin/* && bash /usr/local/bin/image_lossy_processing_jpg.sh
