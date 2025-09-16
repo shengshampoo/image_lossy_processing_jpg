@@ -7,7 +7,7 @@ RUN apk update
 RUN apk upgrade
 
 RUN apk add --no-cache \
-  bash curl xz tar 
+  bash curl xz tar libwebp-tools
 
 # image from Digital Photography Review Galleries
 # https://www.dpreview.com/sample-galleries
