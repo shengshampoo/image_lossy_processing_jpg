@@ -16,6 +16,8 @@ cd /images
 
 /usr/local/bin/rust-parallel -r '(.*)\.(.*)' -p /usr/local/bin/cjxl {0} {1}.jxl ::: $(find /images -maxdepth 1 -name "*.jpg" ! -name "*fs2.jpg"  ! -name "*fs2a.jpg" -type f -exec basename {} \; | awk '!seen[$0]++' | awk '{ printf("%s " , $0) }')
 
-tar vcJf ./images.tar.xz *.jpg *.avif *.jxl
+/usr/local/bin/rust-parallel -r '(.*)\.(.*)' -p /usr/bin/cwebp -q 80 -af {0} -o {1}.webp ::: $(find /images -maxdepth 1 -name "*.jpg" ! -name "*fs2.jpg"  ! -name "*fs2a.jpg" -type f -exec basename {} \; | awk '!seen[$0]++' | awk '{ printf("%s " , $0) }')
+
+tar vcJf ./images.tar.xz *.jpg *.avif *.jxl *.webp
 
 mv ./images.tar.xz /work/artifact/
